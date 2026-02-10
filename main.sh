@@ -3,6 +3,11 @@
 main(){
     #source ArgumentEcho.sh "$*" # need to pass the arguments over
 
+    if [ $# -eq 0 ]; then #0 arg given case
+        printf "\nError: No arguments provided \nFor help use [-h] or [help]\n"
+        return 1
+    fi
+
     #allows for multiple  requests to be handled in a single input
     for arg in "$@" #space delimed args
     do 
@@ -26,7 +31,5 @@ main(){
             printf "\n$arg is not a valid option \nFor help use [-h] or [help]"
         esac
     done
-
 }
-
 main "$@" #must be included to actually call main otherwise nothing will happen
